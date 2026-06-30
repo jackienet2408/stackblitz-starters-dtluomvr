@@ -1,22 +1,17 @@
 'use client';
 
 import { Inter } from 'next/font/google';
-
-import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import './globals.css';
 import { AuthProvider } from '@/lib/auth';
 import { LanguageProvider } from '@/lib/language';
-import { useEffect, useCallback, useState } from 'react';
+import ClientWrapper from './ClientWrapper';
+import { useEffect } from 'react';
+
+// Remove metadata export and move it back to root layout.tsx (if applicable)
+// Or keep this as a client-only component without metadata export
 
 const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'Cell Group Duty Roster',
-  description: 'Manage cell group duty rosters, meetings, and member availability',
-  manifest: '/manifest.json',
-  themeColor: '#000000',
-};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -50,7 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <AuthProvider>
           <LanguageProvider>
-            {children}
+            <ClientWrapper>
+              {children}
+            </ClientWrapper>
           </LanguageProvider>
         </AuthProvider>
       </body>
