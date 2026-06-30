@@ -4,10 +4,7 @@ import { Inter } from 'next/font/google';
 import { AuthProvider } from '@/lib/auth';
 import { LanguageProvider } from '@/lib/language';
 import dynamic from 'next/dynamic';
-
-const useEffect = dynamic(() => import('react').then((mod) => mod.useEffect), { ssr: false });
-const useCallback = dynamic(() => import('react').then((mod) => mod.useCallback), { ssr: false });
-const useState = dynamic(() => import('react').then((mod) => mod.useState), { ssr: false });
+import { useEffect, useCallback, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
