@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { AuthProvider } from '@/lib/auth';
 import { LanguageProvider } from '@/lib/language';
-import dynamic from 'next/dynamic';
 import { useEffect, useCallback, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
